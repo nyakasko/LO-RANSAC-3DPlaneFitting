@@ -1,7 +1,7 @@
 # LO-RANSAC 3DPlaneFitting
  
  
-The project is an implementation of the Locally Optimized RANSAC Random SAmple Consensus (LO-RANSAC) 3D plane fitting algorithm. 
+The project is an implementation of the Locally Optimized Random SAmple Consensus (LO-RANSAC) 3D plane fitting algorithm. 
 
 Input is a 3D pointcloud.
 
