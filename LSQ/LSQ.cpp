@@ -26,10 +26,14 @@ size_t GetIterationNumber(
 	const double& confidence_,
 	const size_t& sampleSize_);
 
-int main()
+int main(int argc, char** argv)
 {
+	if (argc < 3) {
+		std::cerr << "Usage: " << argv[0] << " INPUT.XYZ OUTPUT.XYZ" << std::endl;
+		return 1;
+	}
 	MatrixReaderWriter* mrw;
-	mrw = new MatrixReaderWriter("D:/source/repos/LSQ/out/build/street.xyz");
+	mrw = new MatrixReaderWriter(argv[1]);
 
 	srand(time(NULL));
 
@@ -51,7 +55,7 @@ int main()
 	{
 		mrw2->data[mrw2->columnNum * inlieridx + 3] = 255;
 	}
-	mrw2->save("D:/source/repos/LSQ/out/build/street2.xyz");
+	mrw2->save(argv[2]);
 	const double& a1 = bestPlane.at<double>(0);
 	const double& b1 = bestPlane.at<double>(1);
 	const double& c1 = bestPlane.at<double>(2);
