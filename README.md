@@ -10,3 +10,5 @@ and (2) the coeffficients of the found plane's model.
 
 <img src="https://github.com/nyakasko/RANSAC-3D-Plane-Fitting/blob/main/outputs/street_output.PNG">
 
+<img src="https://github.com/nyakasko/LO-RANSAC-3DPlaneFitting/blob/main/outputs/sampleOutputOfPlaneModel.PNG">
+
