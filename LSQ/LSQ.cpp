@@ -44,8 +44,8 @@ int main(int argc, char** argv)
 	FitPlaneRANSAC(
 		*mrw,
 		inliers, // Output: the indices of the inliers
-		bestPlane, // Output: the parameters of the found 2D line
-		0.08, // The inlier-outlier threshold
+		bestPlane, // Output: the parameters of the found 3D plane
+		0.05, // The inlier-outlier threshold
 		0.99, // The confidence required in the results
 		1000); // The number of iterations
 
@@ -261,7 +261,7 @@ void FitPlaneRANSAC(
 	plane_ = bestPlane;
 }
 
-// Apply Least-Squares line fitting (PCL).
+// Apply Least-Squares plane fitting
 void FitPlaneLSQ(MatrixReaderWriter& mrw,
 	vector<int>& inliers,
 	Mat& plane)
