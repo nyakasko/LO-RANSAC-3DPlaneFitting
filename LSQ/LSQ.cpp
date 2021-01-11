@@ -110,6 +110,7 @@ size_t GetIterationNumber(
 	const double& confidence_,
 	const size_t& sampleSize_)
 {
+	// Number of iterations needed, with a given confidence value
 	double a =
 		log(1.0 - confidence_);
 	double b =
@@ -201,6 +202,7 @@ void FitPlaneRANSAC(
 
 		// Cross product
 		Point3d cp = v1.cross(v2);
+		// Given two linearly independent vectors v1 and v2, the cross product is a vector that is perpendicular to both v1 and v2, and thus normal to the plane containing them
 		cp = cp / cv::norm(cp); // Making it unit length 
 								// --> If the normal vector is normalized (unit length), then the constant term of the plane equation, d becomes the distance from the origin.
 
@@ -292,7 +294,7 @@ void FitPlaneLSQ(MatrixReaderWriter& mrw,
 	for (auto& point : normalizedPoints)
 	{
 		averageDistance += cv::norm(point);
-		// norm(point) = sqrt(point.x * point.x + point.y * point.y)
+		// norm(point) = sqrt(point.x * point.x + point.y * point.y + point.z * point.z)
 	}
 
 	averageDistance /= normalizedPoints.size();
@@ -317,7 +319,7 @@ void FitPlaneLSQ(MatrixReaderWriter& mrw,
 
 	cv::Mat evals, evecs;
 	cv::eigen(A.t() * A, evals, evecs);
-	const cv::Mat& normal = evecs.row(2);
+	const cv::Mat& normal = evecs.row(2); // the normal of the line is the eigenvector corresponding to the smallest eigenvalue
 	const double& a = normal.at<double>(0),
 		& b = normal.at<double>(1), 
 		& c = normal.at<double>(2);
