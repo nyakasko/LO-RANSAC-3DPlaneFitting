@@ -111,6 +111,8 @@ size_t GetIterationNumber(
 	const size_t& sampleSize_)
 {
 	// Number of iterations needed, with a given confidence value
+	// probability of not selecting 2 good points after k iterations = (1-inlierRatio_^2)^k
+	// with a confidence value that we found 2 good points: 1 - confidence_ >= (1-inlierRatio_^2)^k
 	double a =
 		log(1.0 - confidence_);
 	double b =
